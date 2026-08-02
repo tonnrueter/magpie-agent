@@ -50,13 +50,14 @@
      "real": 0.096,
      "placebo": 0.137,
      "fisher_p": 0.555,
-     "note": "genuine null, not a floor - both arms well off zero (5/52, 7/51)"
+     "note": "REFRAMED 2026-08-02 (second-reader review): 'no effect detected at low power', NOT 'no effect' -- at 5/52 vs 7/51 only a several-fold effect was detectable, the point estimate favors the real arm (30% relative), and the exploratory mechanically_certain_defects split (1 vs 7, p=0.0599) points the same way. Also scope_limits[1]: the ablation left AGENT.md, so this is the MARGINAL value of the procedural layer, not 'do instructions work'. (Original note: 'genuine null, not a floor - both arms well off zero (5/52, 7/51)'.)"
     },
     "class_effect": {
      "attribution_role": 0.281,
      "all_other_classes": 0.042,
      "fisher_p": 0.0012,
-     "note": "T5 and T6 both elevated; the class effect is real"
+     "note": "DOWNGRADED 2026-08-02 (second-reader review): T5 and T6 both elevated, but the answer-level p treats 103 answers as independent while class varies only BETWEEN traps (2 of 8; both seeded from the same commit ec119a9, authored after R55 flagged the class). Trap-level permutation p = 0.036 (audit/tools/second_reader_reanalysis_2026_08_02.py). Evidence, but ~30x weaker than the answer-level p; with 2 traps/class, class-vs-item is unidentifiable (item_effect: T5 vs T6 differ at wide p=0.032, and T5's elevation is mostly omitted caveats, 12/16 wide vs 4/16 narrow). Do not quote p=0.0012 for the CLASS claim.",
+     "trap_level_p": 0.036
     },
     "item_effect": {
      "T5_vs_T6_narrow_p": 1.0,
@@ -114,7 +115,13 @@
     "NAMED BLIND SPOT: bare-basename citations. Commit 3620958 (module_80 mis-citations) is still 0/2 -- the defect is `solve.gms:16` vs `lp_nlp_apr17/solve.gms:16`, and RE_CITATION only matches paths rooted at modules|core|config, so the checker never SEES it. check_no_bare_cites nominally covers this class and also fired 0 times on every seeded bug. Two checkers, neither fires on a real instance.",
     "PLAN REORDERED 2026-08-01 -> audit/corpus_investigation_plan.md is now the master. LEAD = cross-module claims measured DOCS-ONLY (the intersection of the only two significant arena effects: attribution_role 28.1% vs 4.2%, and docs-only 29.2% vs 3.1%; attribution_role IS a cross-module claim). Cause: a free re-analysis of R55 (depth_residual_density.json) puts POINTER errors at 1/27 = 3.7% of confirmed defects and 0 of 8 Criticals+Majors, BINDABLE FACT at 78%, PROCESS at 18.5% - and every defect fixed on 2026-08-01 was a pointer error. DEMOTED: the 261 pool (~77% citation drift) to Tier 0 free side-run, Tier 1 gated on its non-citation tail.",
     "DESIGN INVARIANTS for the lead track, fixed before the run: docs-only regime or it measures the MODEL not the corpus (normal regime = 3.1%); BOTH a cross-module and a within-module arm or the locus hypothesis is assumed not measured; within-module arm sampled at RANDOM not by centrality (hub residual density is a floor - R58 found its own selection survivorship-biased); trace each propagated error back to the causing doc claim; lens ablation dropping mechanism_direction to estimate what the battery, which has NO process lens, is blind to."
-   ]
+   ],
+   "second_reader_review": {
+    "date": "2026-08-02",
+    "reviewer": "independent second reader (Fable), no access to the producing session",
+    "artifact": "audit/tools/second_reader_reanalysis_2026_08_02.py",
+    "outcome": "All published numbers reproduced exactly from audit/data/arena_1a_regrade.json. Two inferential downgrades: class_effect to trap-level p=0.036 (unit-of-analysis), arm_null to 'underpowered null with an opposing exploratory signal'. See the review-outcome section appended to the 2026-08-02 handoff briefing, and arena_protocol.md invariants 12-14 added in response."
+   }
   }
  ],
  "cumulative_stats": {

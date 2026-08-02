@@ -145,6 +145,24 @@ so unaffected by the denominator defect above), that is three independent instru
 pointing at the same class. **The direction is supported; no percentage from R60's per-class
 split is.**
 
+> ⚠️ **DOWNGRADED 2026-08-02, second-reader review — the paragraph above overstates twice.**
+> (1) The arena's p=0.0012 is an answer-level Fisher, but class varies only BETWEEN traps:
+> the attribution class is exactly 2 of 8 traps (T5, T6 — both seeded from the same commit
+> `ec119a9`, authored after R55 flagged the class). At the trap level the permutation test
+> gives **p = 0.036** (`audit/tools/second_reader_reanalysis_2026_08_02.py`), and with 2
+> traps per class, "the class propagates" and "these two items are hard" are unidentifiable.
+> (2) "Three independent instruments" overstates independence: the arena traps were authored
+> to probe the hypothesis R55 produced, by the same person; and the surviving R60 counts carry
+> the defect-classifier's labels — the classifier disagreement that voided the rates is
+> evidence against one of the two classifiers without identifying which (Criticals are the
+> most trustworthy part only because they were individually refuter-adjudicated). Also note
+> the counter-instance nowhere in this file: **R58's 7 Criticals — the largest Critical
+> collection in the gradient — sat in prose synthesis**, with M11's 27 module attributions all
+> correct ("a per-claim audit of equations/declarations/input would find ZERO of the
+> Criticals", validation_rounds.json round 58, structural_finding). The class direction
+> remains plausible for never-attended docs; it is not established, and it does not hold in
+> maintained docs.
+
 **What predicts density is PRIOR AUDIT EXPOSURE.** Two docs of different kinds, both never
 depth-audited, land 0.6 points apart (31.9% / 32.5%) and 4-6x above the audited hubs (R55
 5.6%, R58 7.7%).

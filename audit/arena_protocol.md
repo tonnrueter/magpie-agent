@@ -84,6 +84,36 @@ grader's error rate can be measured rather than assumed. Tools: `audit/tools/che
 Verifying findings you *chose* measures your ability to choose. Hand-picked 6/6 implied ~100%
 precision where a stratified sample of 21 gave 57–67%.
 
+**12. Test every contrast at the level the treatment actually varies.**
+Arena 1A's class effect was published as p = 0.0012 from an answer-level Fisher over 103
+answers — but class varied only *between traps*, and the attribution class was exactly 2 traps
+of 8. At the trap level the same data give p = 0.036
+(`audit/tools/second_reader_reanalysis_2026_08_02.py`), ~30x weaker, and with 2 items per
+class, "the class is hard" and "these two items are hard" cannot be told apart. Rule: identify
+the unit at which each factor varies *before* computing its p-value; a factor that varies
+between items needs an item-level test and **≥5 items per level** before its p-value means
+anything. Print the per-item breakdown next to any class rate.
+
+**13. A null result must state what it could have detected — and one power correction
+licenses a sweep for its siblings.**
+The same artifact set that retracted "the locus hypothesis is REFUTED" as an underpowered null
+*published* "verifiers.md produced no measurable effect" from 5/52 vs 7/51 — a comparison that
+could only detect a several-fold effect, whose point estimate favoured the real arm, and which
+sat next to an opposing exploratory signal (mechanically-certain defects 1 vs 7, p = 0.06) that
+the summary dropped. Rule: every null carries the effect size it had 80% power to detect, and
+any counter-signal in the same record travels with it. When you correct one underpowered claim,
+immediately sweep the artifact set for every other null and every headline p — the error class
+recurs within a session, not across sessions.
+
+**14. "Independent instruments" is a provenance claim — trace it before making it.**
+Traps authored by the hypothesis framer, after the hypothesis-generating round, seeded from a
+single commit, are not independent confirmation of that hypothesis; they are the hypothesis
+probing itself. Arena 1A's two attribution traps (T5, T6) were both seeded from `ec119a9`
+post-R55, yet were counted as one of "three independent instruments" for the class claim.
+Rule: for each confirming instrument, state who authored its items, when relative to the
+hypothesis, and from what pool. Prefer sampling items from an adversarially-refuted findings
+ledger over authoring them — sampling is provenance-clean by construction.
+
 ## Standing components
 
 | component | purpose |

@@ -56,6 +56,16 @@ R60 carbon    ALL 3 Criticals are attribution_read      (COUNT, not a rate -- se
 R60 module_34 3 of 6 Criticals are in mechanizable classes
 ```
 
+> ⚠️ **DOWNGRADED 2026-08-02 (second-reader review).** The arena line is a unit-of-analysis
+> error: class varies only BETWEEN traps (2 of 8 — T5/T6, both seeded from commit `ec119a9`,
+> authored after R55 flagged the class), so the honest test is trap-level: **p = 0.036**, not
+> 0.0012 (`audit/tools/second_reader_reanalysis_2026_08_02.py`; class-vs-item unidentifiable
+> at 2 traps/class). "Three instruments that share no code" also overstates *independence*:
+> the traps were authored to probe R55's hypothesis, by the same person. And the omitted
+> counter-instance: **R58's 7 Criticals sat in prose synthesis with all 27 module
+> attributions correct** (round 58 `structural_finding`) — the class concentration does not
+> hold in maintained docs. Direction still plausible for cold docs; not established.
+
 ⚠️ **RETRACTED 2026-08-02: the "attribution_read 11/19 = 58%" figure first published here was
 invalid, and NO per-class rate may be quoted from R60.** The Enumerate agent classifies
 CLAIMS into classes; the lens agents classify DEFECTS into classes; **the two allocations do
@@ -86,6 +96,19 @@ Two docs of completely different kinds, both never depth-audited, land within 0.
 each other and 4-6x above the audited hubs. **Attention is the variable. Everything else
 tested so far is not.**
 
+> **SHARPENED 2026-08-02 (second-reader review), two ways.** (1) *Every* row of this table
+> was receiving its **first** depth audit at measurement time — the only docs ever
+> depth-audited are R55's, R58's and R60's own targets. What varies across the gradient is
+> cumulative *ordinary* attention (Q&A rounds, checkers, notes-file corrections), which is
+> nearly collinear with hub centrality — hubs are better-maintained because they matter. So
+> "attention" is the right word, but it is not an exposure a depth-audit sweep
+> straightforwardly manipulates, and centrality confounds it. (2) **Claim-mix composition
+> explains ~a quarter of the gap**: the audited hubs are 17.9% citation claims (lowest-yield
+> class) vs carbon_balance's 1.0%; reweighting R55's per-class rates to carbon_balance's mix
+> predicts 7.2%, not 5.6% (`audit/tools/second_reader_reanalysis_2026_08_02.py` — a bound,
+> not a measurement: it uses R55's SUSPECT per-class rates). The gradient survives
+> standardization (~2.8x), but "4-6x" is partly composition.
+
 ## The defect gradient — the session's main empirical result
 
 ```
@@ -115,10 +138,21 @@ without him. Four independent lines converge:
    `set_membership` 15.9% — against `mechanism` 2.5% and `citation` 1.1%. Attribution is
    exactly what `scripts/check_attribution_omissions.py --dump-rolemap` derives
    deterministically from code at ~0 FNR. The class carrying the most harm needs no prose.
+   *[2026-08-02 review: the rates quoted here are the SUSPECT R55 per-class table; and
+   "~0 FNR" is the role MAP's fidelity, not the pipeline's — R60 found attribution defects
+   the checker battery demonstrably did not prevent, because BINDING prose claims to the map
+   (coverage) is the hard part (the analogous citation checker covers 43.8%). The strong form
+   of this line is: GENERATION from the map deletes the binding problem that checking cannot
+   solve. That form survives; the rates do not carry it.]*
 2. **The corpus matters most where it cannot be checked.** Arena 1A: docs-only propagation
    29.2% vs 3.1% normal (p=0.0157). With code access the model self-corrects.
 3. **The cost curve does not converge.** Measured 2026-08-02: **$30/doc, 1.13M tokens.** A
    full sweep is ~$1,400 and decays with every MAgPIE merge; after ~60 rounds coverage is 15%.
+   *[2026-08-02 review: "decays with every merge" is the load-bearing premise here, and the
+   measured durability evidence cuts against FAST decay — R59 arm A re-probed R58's fixes and
+   they held (0 Criticals in ~720 rewritten lines), and once-attended-but-stale hubs sit at
+   7.7%, near the 5.6% floor rather than the ~20% cold level. Decay speed is a lead to
+   measure, not a premise to assume.]*
 4. **R58's structural finding**: the machine-checkable surface is already clean and defects
    migrated to prose synthesis — M29's auditor found a per-claim audit of
    `equations.gms`/`declarations.gms`/`input.gms` would catch **zero** of that round's
