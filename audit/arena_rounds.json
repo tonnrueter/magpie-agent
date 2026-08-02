@@ -44,7 +44,8 @@
      "rep4_low": 0.13,
      "rep1_vs_pooled_wide_p": 0.0058,
      "docs_only_vs_normal_narrow_p": 0.0157,
-     "note": "low effort degrades COMPLETENESS (omitted caveats); no code access degrades CORRECTNESS (outright falsehoods)"
+     "note": "low effort degrades COMPLETENESS (omitted caveats); no code access degrades CORRECTNESS (outright falsehoods)",
+     "robustness_2026_08_02": "SURVIVES second-reader scrutiny and is the round's stronger effect. Regime is a WITHIN-trap factor (every trap ran in every replicate, 4 answers/cell), so the answer-level test is the correct one -- unlike class_effect. One imbalance checked: T7/T8 ran in rep1 only; dropping them strengthens the contrast to 0/24 normal vs 7/24 docs-only, p = 0.0094. Build on this effect. (audit/tools/second_reader_reanalysis_2026_08_02.py)"
     },
     "arm_null": {
      "real": 0.096,
@@ -120,7 +121,14 @@
     "date": "2026-08-02",
     "reviewer": "independent second reader (Fable), no access to the producing session",
     "artifact": "audit/tools/second_reader_reanalysis_2026_08_02.py",
-    "outcome": "All published numbers reproduced exactly from audit/data/arena_1a_regrade.json. Two inferential downgrades: class_effect to trap-level p=0.036 (unit-of-analysis), arm_null to 'underpowered null with an opposing exploratory signal'. See the review-outcome section appended to the 2026-08-02 handoff briefing, and arena_protocol.md invariants 12-14 added in response."
+    "outcome": "All published numbers reproduced exactly from audit/data/arena_1a_regrade.json. Two inferential downgrades: class_effect to trap-level p=0.036 (unit-of-analysis), arm_null to 'underpowered null with an opposing exploratory signal'. See the review-outcome section appended to the 2026-08-02 handoff briefing, and arena_protocol.md invariants 12-14 added in response.",
+    "surfaces_corrected": [
+     "audit/arena_1a_regrade.md (the round's designated FINAL artifact) -- class-effect paragraph",
+     "audit/arena_1a_synthesis.md -- the correction banner asserting class-specificity",
+     "audit/corpus_investigation_plan.md -- READ FIRST block, the two-effects table, and the 'two instruments that share no code' line",
+     "audit/archive/rounds/round60_depth/STATE_R60_INCOMPLETE.md -- 'three independent instruments'",
+     "audit/validation_rounds.json round 55 -- per-class rates flagged SUSPECT"
+    ]
    }
   }
  ],

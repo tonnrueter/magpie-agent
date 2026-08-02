@@ -83,6 +83,18 @@ This settles two claims that were argued in both directions across the previous 
 it — does not survive: *both* members are elevated, and the class separates from the rest of the
 corpus decisively.
 
+> ⚠️ **DOWNGRADED 2026-08-02 (second-reader review) — this paragraph answers the wrong worry.**
+> The refuted worry was "one item drove it"; the live problem is the **unit of analysis**. The
+> Fisher above treats 103 answers as independent, but class varies only BETWEEN traps, and the
+> class is exactly 2 traps of 8 (T5/T6, both seeded from commit `ec119a9`, authored after R55
+> named the class). Testing at the level the treatment varies — permutation over which 2 of 8
+> traps carry the label — gives **p = 0.036**, ~30x weaker
+> (`audit/tools/second_reader_reanalysis_2026_08_02.py`). "Both members elevated" is 2 items,
+> not independent replication, and the item effect documented in the very next paragraph
+> (T5 vs T6, wide p = 0.032) is what makes class-vs-item unidentifiable here. Quote p = 0.036,
+> and treat the class effect as a lead needing ≥5 items per class — ideally SAMPLED from a
+> refuted-findings ledger rather than authored. See `arena_protocol.md` invariants 12 and 14.
+
 **The item effect is also real, but only on the wide measure.** T5 vs T6 is **p = 1.000 narrow**
 (25.0% vs 31.2%) and **p = 0.032 wide** (75.0% vs 31.2%). Both prior positions were half right:
 the re-adjudication's "these two items behave the same" holds for outright falsehoods, and the

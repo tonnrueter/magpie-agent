@@ -15,6 +15,11 @@
 >   real on the omitted-caveat measure. But §3's stronger clause, *"not class-specific"*, is
 >   **wrong**: the `attribution_role` class runs 28.1% vs 4.2% for all other classes,
 >   p = 0.0012. Propagation is **both** class-specific and item-specific.
+>   ⚠️ **2026-08-02 second-reader review: p = 0.0012 is an answer-level test of a
+>   trap-level factor.** At the level class actually varies (2 traps of 8) the permutation
+>   p is **0.036**, and class-vs-item is unidentifiable at 2 items per class — so "§3's
+>   stronger clause is wrong" is itself too strong: class-specificity is a lead, not settled.
+>   See `arena_1a_regrade.md` §class effect and `arena_protocol.md` invariants 12/14.
 > - **§2 arm null and §4** survive unchanged, and the arm null is now a genuine null rather
 >   than a floor (both arms well off zero).
 >

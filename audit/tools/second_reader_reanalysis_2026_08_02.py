@@ -133,6 +133,52 @@ def composition_standardization():
     return expected
 
 
+def regime_effect_robustness():
+    """The regime effect passes the scrutiny the class effect failed -- build on it.
+
+    Regime is a WITHIN-trap factor (every trap ran in every replicate, 4 answers per
+    cell), so the answer-level test is the correct one -- unlike class, which varies
+    only between traps. The one imbalance is T7/T8, which ran in rep1 only; dropping
+    them STRENGTHENS the effect, so it is not an artifact of that imbalance.
+    """
+    d = json.loads((ROOT / "audit/data/arena_1a_regrade.json").read_text())
+    key, cons = d["key"], d["consensus"]
+
+    def tally(pred):
+        k = n = 0
+        for aid, meta in key.items():
+            v = cons.get(aid)
+            if v is None or not pred(meta):
+                continue
+            n += 1
+            k += (v == "ASSERTS_FALSEHOOD")
+        return k, n
+
+    # Balance check: which replicates each trap appeared in.
+    reps_per_trap = {}
+    for meta in key.values():
+        reps_per_trap.setdefault(meta["trap"], set()).add(meta["rep"])
+    partial = {t: sorted(r) for t, r in reps_per_trap.items() if len(r) < 4}
+
+    all_1, all_3 = tally(lambda m: m["rep"] == 1), tally(lambda m: m["rep"] == 3)
+    bal_1 = tally(lambda m: m["rep"] == 1 and m["trap"] not in partial)
+    bal_3 = tally(lambda m: m["rep"] == 3 and m["trap"] not in partial)
+    p_all = fisher_two_sided(all_1[0], all_1[1] - all_1[0], all_3[0], all_3[1] - all_3[0])
+    p_bal = fisher_two_sided(bal_1[0], bal_1[1] - bal_1[0], bal_3[0], bal_3[1] - bal_3[0])
+    assert abs(p_all - 0.0157) < 0.0005, p_all  # reproduces the published figure
+
+    print("\n== Regime effect (docs-only vs normal): robustness ==")
+    print(f"traps not run in all 4 replicates: {partial or 'none'}")
+    print(f"all traps:      rep1 {all_1[0]}/{all_1[1]} vs rep3 {all_3[0]}/{all_3[1]},"
+          f"  p = {p_all:.4f}  [reproduced]")
+    print(f"balanced traps: rep1 {bal_1[0]}/{bal_1[1]} vs rep3 {bal_3[0]}/{bal_3[1]},"
+          f"  p = {p_bal:.4f}")
+    print("Regime is a WITHIN-trap factor, so the answer-level test is correct here; "
+          "dropping the imbalanced traps strengthens it. Build on this effect, "
+          "not on the class effect.")
+
+
 if __name__ == "__main__":
     trap_level_class_effect()
     composition_standardization()
+    regime_effect_robustness()

@@ -281,9 +281,17 @@ the comparator rather than R55 once it exists.
 At the same time, the arena's only two significant effects both point the same way:
 
 ```
-class = attribution_role   28.1%  vs  4.2% all other classes   p = 0.0012
+class = attribution_role   28.1%  vs  4.2% all other classes   p = 0.0012  <- see downgrade
 regime = docs-only         29.2%  vs  3.1% normal              p = 0.0157
 ```
+
+> ⚠️ **2026-08-02: the class line is trap-level p = 0.036, not 0.0012** (unit-of-analysis;
+> 2 traps of 8, same author, post-hypothesis). **The regime line SURVIVES the same scrutiny
+> and is the stronger of the two**: regime is a WITHIN-trap factor (every trap ran in every
+> replicate, 4 answers per cell), so the answer-level test is the right one. Checked for the
+> one imbalance — T7/T8 ran in rep1 only — and dropping them makes it stronger, not weaker:
+> 0/24 normal vs 7/24 docs-only, p = 0.0094. Of the arena's two effects, **build on the
+> regime effect.**
 
 **Attribution-role IS a cross-module claim** — who declares vs. populates vs. reads a
 variable across module boundaries. The class effect and the process layer are the same
@@ -326,6 +334,10 @@ plan's thesis. Treat as a lead.
 who reads what, in which direction, whether the edge exists at all. All 10 Criticals are
 that. `attribution_read` (5.3%-23.7%) and the arena's `attribution_role` (28.1%) are the
 same class measured by two instruments that share no code.
+*[2026-08-02: "share no code" is true but "independent" is not — the arena's 2 attribution
+traps were authored by the framer of the R55-derived hypothesis, after R55, from one commit;
+and the R55 rates in this sentence are the SUSPECT per-class table. See the READ FIRST
+downgrade block and `arena_protocol.md` invariant 14.]*
 
 ---
 
